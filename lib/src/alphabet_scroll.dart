@@ -11,12 +11,13 @@ class AlphabetScrollView extends StatefulWidget {
       this.alignment = LetterAlignment.right,
       this.isAlphabetsFiltered = true,
       this.overlayWidget,
+      this.selectedDecoration,
       required this.selectedTextStyle,
       required this.unselectedTextStyle,
       this.itemExtent = 40,
       required this.itemBuilder})
       : super(key: key);
-
+  final Decoration? selectedDecoration;
   /// List of Items should be non Empty
   /// and you must map your
   /// ```
@@ -243,6 +244,7 @@ class _AlphabetScrollViewState extends State<AlphabetScrollView> {
                                 scrolltoIndex(x, positionNotifer.value);
                               },
                               child: Container(
+                                decoration: selected == x?widget.selectedDecoration??BoxDecoration(shape: BoxShape.circle,color:Colors.white):null,
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 2),
                                 child: Text(
